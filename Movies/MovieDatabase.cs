@@ -12,7 +12,7 @@ namespace Movies
     /// </summary>
     public class MovieDatabase
     {
-        private List<Movie> movies = new List<Movie>();
+        private  List<Movie> movies = new List<Movie>();
 
         /// <summary>
         /// Loads the movie database from the JSON file
@@ -26,9 +26,9 @@ namespace Movies
             }
         }
 
-        public List<Movie> All { get { return movies; } }
+        public  List<Movie> All { get { return movies; } }
 
-        public List<Movie> Search(List<Movie> movies, string term)
+        public  List<Movie> Search(List<Movie> movies, string term)
         {
          
             List<Movie> result = new List<Movie>();
@@ -44,7 +44,7 @@ namespace Movies
             return result;
         }
 
-        public List<Movie> FilterByMPAA(List<Movie> movies, List<string> mpaa)
+        public  List<Movie> FilterByMPAA(List<Movie> movies, List<string> mpaa)
         {
             List<Movie> results = new List<Movie>();
 
