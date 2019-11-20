@@ -17,23 +17,26 @@ namespace Movies.Pages
             Movies = movieDatabase.All;
         }
 
-        public void OnPost(string search, List<string> rating)
+        public void OnPost(string search, List<string> rating, float? minIMDB, float? maxIMDB)
         {
-            if (search != null && rating.Count != 0)
+            Movies = movieDatabase.All;
+
+            if(search != null)
             {
-                Movies = movieDatabase.SearchAndFilter(search, rating);
+                Movies = movieDatabase.Search(Movies, search);
             }
-            else if (rating.Count != 0)
+
+            if(rating.Count != 0)
             {
-                Movies = movieDatabase.Filter(rating);
+                Movies = movieDatabase.FilterByMPAA(Movies, rating);
             }
-            else if (search != null)
+            if (minIMDB != null)
             {
-                Movies = movieDatabase.Search(search);
+                Movies = movieDatabase.FilterByMinIMDB(Movies, (float)minIMDB);
             }
-            else
+            if(maxIMDB != null)
             {
-                Movies = movieDatabase.All;
+                Movies = movieDatabase.FilterByMaxIMDB(Movies, (float)maxIMDB);
             }
         }
     }
